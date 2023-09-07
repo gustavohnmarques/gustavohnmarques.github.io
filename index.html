@@ -120,7 +120,7 @@
 
             });
 
-            renderizarPersonagem(blocoAtual)
+            //renderizarPersonagem(blocoAtual)
             
         }
 
@@ -131,25 +131,25 @@
 
         const andarParaDireita = () => {
             const blocoPersonagem = document.getElementById(blocoAtual);
-            blocoPersonagem.innerHTML = `<div class="personagemAndando"></div>`;
+            blocoPersonagem.innerHTML = `<div class="personagemAndandoDireita"></div>`;
 
             setTimeout(() => {
                 blocoPersonagem.innerHTML = '';
                 blocoAtual++
                 const proximoBloco = document.getElementById(blocoAtual);
-                proximoBloco.innerHTML = `<div class="personagemParado"></div>`;
+                proximoBloco.innerHTML = `<div class="personagemParadoDireita"></div>`;
             }, 700);
         }
 
         const andarParaEsquerda = () => {
             const blocoPersonagem = document.getElementById(blocoAtual);
-            blocoPersonagem.innerHTML = `<div class="personagemAndando andandoEsquerda esquerda"></div>`;
+            blocoPersonagem.innerHTML = `<div class="personagemAndandoEsquerda"></div>`;
 
             setTimeout(() => {
                 blocoPersonagem.innerHTML = '';
                 blocoAtual--
                 const proximoBloco = document.getElementById(blocoAtual);
-                proximoBloco.innerHTML = `<div class="personagemParado esquerda"></div>`;
+                proximoBloco.innerHTML = `<div class="personagemParadoEsquerda"></div>`;
             }, 700);
         }
 
@@ -173,7 +173,7 @@
                 blocoPersonagem.innerHTML = '';
                 blocoAtual = blocoAtual + 16;
                 const proximoBloco = document.getElementById(blocoAtual);
-                proximoBloco.innerHTML = `<div class="personagemParado"></div>`;
+                proximoBloco.innerHTML = `<div class="personagemParadoDireita"></div>`;
             }, 700);
         }
 
