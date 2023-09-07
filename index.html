@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>     
-    
+        
     <section id="cenario">
 
     </section>    
@@ -23,7 +23,7 @@
         }
 
         const largura = 256;        
-        let blocoAtual = 48;
+        let blocoAtual = 52;
 
         const tiposCenarios = [
             {
@@ -98,16 +98,25 @@
         }
 
         const iniciarPersonagem = () => {
+            renderizarPersonagemInicial();
 
             document.addEventListener("keypress", function(event) {
                 console.log(event.keyCode)
                 if(event.keyCode == 100){
-                    blocoAtual++
-                    renderizarPersonagem(blocoAtual)
+                    andarParaDireita();
                 }
 
                 if(event.keyCode == 97){
-                    blocoAtual--
+                    andarParaEsquerda();
+                }
+
+                if(event.keyCode == 115){
+                    blocoAtual += 16
+                    renderizarPersonagem(blocoAtual)
+                }
+
+                if(event.keyCode == 119){
+                    blocoAtual -= 16
                     renderizarPersonagem(blocoAtual)
                 }
 
@@ -117,14 +126,33 @@
             
         }
 
-        const renderizarPersonagem = (bloco) => {
-            try {
-                document.getElementById("personagem").outerHTML = "";
-            } catch (error) {
-                
-            }            
+        const renderizarPersonagemInicial = () => {
             const blocoPersonagem = document.getElementById(blocoAtual);
-            blocoPersonagem.innerHTML = `<img id="personagem" width="70" height="70" src="personagens/personagem.png" alt="" style="position: absolute;">`
+            blocoPersonagem.innerHTML = `<div class="personagemParado"></div>`;
+        }
+
+        const andarParaDireita = () => {
+            const blocoPersonagem = document.getElementById(blocoAtual);
+            blocoPersonagem.innerHTML = `<div class="personagemAndando"></div>`;
+
+            setTimeout(() => {
+                blocoPersonagem.innerHTML = '';
+                blocoAtual++
+                const proximoBloco = document.getElementById(blocoAtual);
+                proximoBloco.innerHTML = `<div class="personagemParado"></div>`;
+            }, 700);
+        }
+
+        const andarParaEsquerda = () => {
+            const blocoPersonagem = document.getElementById(blocoAtual);
+            blocoPersonagem.innerHTML = `<div class="personagemAndando andandoEsquerda esquerda"></div>`;
+
+            setTimeout(() => {
+                blocoPersonagem.innerHTML = '';
+                blocoAtual--
+                const proximoBloco = document.getElementById(blocoAtual);
+                proximoBloco.innerHTML = `<div class="personagemParado esquerda"></div>`;
+            }, 700);
         }
 
         const iniciarGame = async () => {
