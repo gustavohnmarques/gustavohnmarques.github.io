@@ -111,12 +111,11 @@
                 }
 
                 if(event.keyCode == 115){
-                    blocoAtual += 16
-                    renderizarPersonagem(blocoAtual)
+                    andandoBaixo();
                 }
 
                 if(event.keyCode == 119){
-                    andandoCima()
+                    andandoCima();
                 }
 
             });
@@ -165,6 +164,19 @@
                 proximoBloco.innerHTML = `<div class="personagemParadoCima"></div>`;
             }, 700);
         }
+
+        const andandoBaixo = () => {
+            const blocoPersonagem = document.getElementById(blocoAtual);
+            blocoPersonagem.innerHTML = `<div class="personagemDescendo"></div>`;
+
+            setTimeout(() => {
+                blocoPersonagem.innerHTML = '';
+                blocoAtual = blocoAtual + 16;
+                const proximoBloco = document.getElementById(blocoAtual);
+                proximoBloco.innerHTML = `<div class="personagemParado"></div>`;
+            }, 700);
+        }
+
 
         const iniciarGame = async () => {
             gerarPorcentagemDeCanarios().then(async() => {                

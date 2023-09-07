@@ -111,3 +111,23 @@ div {
     }
 }
 
+.personagemDescendo {
+    height: 32px;
+    width: 32px;
+    background: url("./personagens/andando.png");
+    animation: spiteDescendo 1s steps(6);
+    scale: 1.3;
+}
+
+@keyframes spiteDescendo {
+    from {
+        background-position: 0px;        
+        margin-top: 0px;
+    }
+    to {
+        background-position: -192px;
+        margin-top: 60px;
+    }
+}
+
+
